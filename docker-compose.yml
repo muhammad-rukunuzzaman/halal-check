@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: halaldb
+      POSTGRES_USER: halal
+      POSTGRES_PASSWORD: halal
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/halaldb
+      SPRING_DATASOURCE_USERNAME: halal
+      SPRING_DATASOURCE_PASSWORD: halal
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+volumes:
+  pgdata:
