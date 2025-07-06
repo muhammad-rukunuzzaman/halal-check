@@ -1,0 +1,3 @@
+INSERT INTO food_code(code, status) VALUES ('E100', 'HALAL') ON CONFLICT DO NOTHING;
+INSERT INTO food_code(code, status) VALUES ('E200', 'HARAM') ON CONFLICT DO NOTHING;
+INSERT INTO food_code(code, status) VALUES ('E300', 'MASHBUH') ON CONFLICT DO NOTHING;
