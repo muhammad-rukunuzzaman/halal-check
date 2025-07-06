@@ -1,6 +1,10 @@
-const App = () => {
-  const [code, setCode] = React.useState('');
-  const [result, setResult] = React.useState(null);
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [code, setCode] = useState('');
+  const [result, setResult] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!code) return;
@@ -16,15 +20,21 @@ const App = () => {
       setResult('Error');
     }
   };
+
   return (
-    <div>
+    <div className="App">
       <h1>Halal Check</h1>
       <form onSubmit={handleSubmit}>
-        <input value={code} onChange={e => setCode(e.target.value)} placeholder="Food Code" />
+        <input
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          placeholder="Food Code"
+        />
         <button type="submit">Check</button>
       </form>
       {result && <p>Result: {result}</p>}
     </div>
   );
-};
-ReactDOM.render(<App />, document.getElementById('root'));
+}
+
+export default App;
