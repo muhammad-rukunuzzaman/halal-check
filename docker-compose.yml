@@ -8,6 +8,9 @@ services:
       POSTGRES_PASSWORD: halal
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
 
   backend:
     build: ./backend
@@ -19,7 +22,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: halal
 
   nginx:
-    build: ./nginx
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
     ports:
       - "80:80"
     depends_on:
