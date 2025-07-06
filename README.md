@@ -8,6 +8,12 @@ This project provides a simple web application to check whether a food code is H
 * **JDK 17** and **Gradle** - only necessary if you want to build or test the backend outside of Docker.
 * **Node.js** and **npm** - only necessary if you want to build the React frontend outside of Docker.
 
+## Prerequisites
+
+* **Docker** and **Docker Compose** - required to run the application in containers.
+* **JDK 17** and **Gradle** - only necessary if you want to build or test the backend outside of Docker.
+* **Node.js** and **npm** - only necessary if you want to build the React frontend outside of Docker.
+
 ## Usage
 
 1. Build and start the services (Postgres will be initialized with sample data):
@@ -17,6 +23,7 @@ docker-compose up --build
 ```
 
 2. Open `http://localhost` in a browser and enter a food code to see the result.
+
 
 Postgres also exposes port `5432` if you want to connect using a local client.
 
